@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumisite · Sites para clínicas e negócios locais</title>
+<meta name="description" content="A Lumisite cria sites profissionais para clínicas, consultórios e negócios locais em todo o Brasil. Site no celular, botão de WhatsApp, presença no Google e manutenção mensal.">
+<meta name="theme-color" content="#121A45">
+<meta property="og:title" content="Lumisite · Seu negócio com a luz acesa na internet">
+<meta property="og:description" content="Sites para clínicas e negócios locais, de qualquer cidade do Brasil.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap">
+<style>
+:root{
+  --navy:#121A45;
+  --navy-2:#1F2A6B;
+  --night:#0A0F2E;
+  --amber:#FFC233;
+  --amber-d:#F2A900;
+  --ice:#F4F5FB;
+  --ice-2:#E6E9F6;
+  --mute:#5A6490;
+  --line:rgba(18,26,69,.16);
+  --display:"Sora","Inter Display","Inter",system-ui,sans-serif;
+  --sans:"Manrope","Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gut:clamp(20px,5vw,72px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--ice);color:var(--navy);line-height:1.55;font-size:18px;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber-d);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1240px,100% - 2*var(--gut));margin-inline:auto}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.04;letter-spacing:-.035em}
+h2{font-size:clamp(36px,4.8vw,64px)}
+h3{font-size:clamp(20px,1.8vw,24px);letter-spacing:-.02em}
+p{max-width:60ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--amber);color:var(--navy);font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em;text-decoration:none;padding:17px 32px;border-radius:999px;border:0;cursor:pointer;transition:background .2s,transform .2s}
+.btn:hover{background:#FFD25E}
+.btn:active{transform:scale(.98)}
+.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.8px currentColor}
+.btn.line:hover{background:rgba(127,127,160,.14)}
+.btn.dark{background:var(--navy);color:var(--ice)}
+.btn.dark:hover{background:var(--navy-2)}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:50;background:var(--navy);color:var(--ice)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:28px;letter-spacing:-.04em}
+.brand span{color:var(--amber)}
+.brand svg{width:38px;height:38px}
+nav ul{display:flex;gap:30px;list-style:none}
+nav a{text-decoration:none;font-size:15.5px;font-weight:600;color:#C9CFEE}
+nav a:hover{color:#fff}
+.nav .btn{padding:11px 22px;font-size:15px}
+@media(max-width:940px){nav{display:none}}
+
+/* ---------- hero (luz acesa) ---------- */
+.hero{position:relative;overflow:hidden;min-height:min(920px,calc(100svh - 74px));display:flex;align-items:center;padding:clamp(48px,7vw,96px) 0;
+  background:var(--night);color:#8F98C9;transition:background 1.1s ease,color 1.1s ease}
+.hero[data-lit="1"]{background:var(--ice);color:var(--navy)}
+.hero::before{content:"";position:absolute;right:-8%;top:50%;width:min(1100px,120vw);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,194,51,.55) 0%,rgba(255,194,51,.2) 32%,rgba(255,194,51,0) 66%);
+  transform:translateY(-50%) scale(.15);opacity:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1),opacity 1.1s ease;pointer-events:none}
+.hero[data-lit="1"]::before{transform:translateY(-50%) scale(1);opacity:1}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,80px);align-items:center}
+.hero h1{display:grid;font-size:clamp(46px,6.6vw,98px);letter-spacing:-.045em;line-height:.98}
+.hero h1 span{grid-area:1/1;transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.hero h1 .on{opacity:0;transform:translateY(24px)}
+.hero[data-lit="1"] h1 .on{opacity:1;transform:none}
+.hero[data-lit="1"] h1 .off{opacity:0;transform:translateY(-24px)}
+.hero h1 .off{color:#7C86BE}
+.hero h1 .on b{color:#C98500;font-weight:800}
+.hero .sub{margin-top:28px;font-size:clamp(18px,1.5vw,21px);max-width:44ch;transition:color 1.1s}
+.hero[data-lit="1"] .sub{color:#2B3573}
+.hero .cta{display:flex;flex-wrap:wrap;gap:16px;margin-top:38px}
+.hero .btn.line{color:inherit}
+.sw{display:inline-flex;align-items:center;gap:14px;margin-top:44px;background:none;border:0;color:inherit;font:inherit;font-size:15px;font-weight:600;cursor:pointer;padding:6px 0}
+.sw i{width:64px;height:34px;border-radius:999px;background:#2B3573;position:relative;transition:background .4s;flex:none}
+.sw i::after{content:"";position:absolute;left:4px;top:4px;width:26px;height:26px;border-radius:50%;background:#8F98C9;transition:transform .4s cubic-bezier(.3,1.4,.5,1),background .4s}
+.hero[data-lit="1"] .sw i{background:var(--amber)}
+.hero[data-lit="1"] .sw i::after{transform:translateX(30px);background:var(--navy)}
+.win{position:relative;justify-self:center;width:min(100%,520px);aspect-ratio:1/1.02;border-radius:34px;background:#121A45;border:2px solid #2B3573;box-shadow:0 40px 100px rgba(0,0,0,.35);overflow:hidden;transition:background .9s,border-color .9s,box-shadow .9s}
+.hero[data-lit="1"] .win{background:#fff;border-color:var(--navy);box-shadow:0 40px 90px rgba(18,26,69,.22)}
+.win .bar{display:flex;gap:9px;align-items:center;padding:20px 24px;border-bottom:2px solid #2B3573;transition:border-color .9s}
+.hero[data-lit="1"] .win .bar{border-color:var(--navy)}
+.win .bar i{width:11px;height:11px;border-radius:50%;background:#2B3573;transition:background .9s}
+.hero[data-lit="1"] .win .bar i{background:var(--navy)}
+.win .bar u{margin-left:12px;flex:1;height:26px;border-radius:999px;background:#1F2A6B;text-decoration:none;font-size:13px;line-height:26px;padding:0 14px;color:#8F98C9;transition:all .9s}
+.hero[data-lit="1"] .win .bar u{background:var(--ice-2);color:var(--mute)}
+.win .sunbox{position:absolute;left:50%;top:50%;width:42%;aspect-ratio:1;transform:translate(-50%,-62%)}
+.win .sunbox svg{width:100%;height:100%;overflow:visible}
+.disc{fill:#2B3573;transition:fill .8s}
+.hero[data-lit="1"] .disc{fill:var(--amber)}
+.rays{transform-origin:50% 50%;transition:opacity .8s .2s,transform 1.4s cubic-bezier(.2,.7,.2,1) .1s;opacity:0;transform:scale(.4) rotate(-40deg)}
+.hero[data-lit="1"] .rays{opacity:1;transform:none}
+.win .lines{position:absolute;left:10%;right:10%;bottom:9%;display:grid;gap:12px;opacity:0;transform:translateY(14px);transition:opacity .8s .5s,transform .8s .5s}
+.hero[data-lit="1"] .win .lines{opacity:1;transform:none}
+.win .lines b{height:12px;border-radius:6px;background:var(--ice-2);display:block}
+.win .lines b:nth-child(1){width:72%;background:var(--navy)}
+.win .lines b:nth-child(3){width:44%}
+.win .lines em{display:block;width:150px;height:38px;border-radius:999px;background:var(--amber);margin-top:6px}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.win{width:min(100%,380px)}.hero{min-height:0}}
+
+/* ---------- teste ---------- */
+.test{padding:clamp(70px,10vw,140px) 0}
+.test .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,100px);align-items:start}
+.test h2{margin-bottom:22px}
+.test .lead{color:#2B3573;max-width:42ch}
+.checks{display:grid;gap:12px}
+.checks label{position:relative;display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:center;background:#fff;border-radius:20px;padding:18px 22px;cursor:pointer;box-shadow:inset 0 0 0 1.8px var(--line);transition:box-shadow .2s,background .2s;font-weight:600;font-size:17.5px}
+.checks label:hover{box-shadow:inset 0 0 0 1.8px var(--navy)}
+.checks input{position:absolute;opacity:0;pointer-events:none}
+.checks .bx{width:44px;height:44px;border-radius:14px;border:2.5px solid var(--navy);display:grid;place-items:center;transition:background .2s,transform .2s}
+.checks .bx svg{width:26px;height:26px;stroke:var(--navy);stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .3s .05s}
+.checks input:checked+.bx{background:var(--amber);transform:scale(1.06)}
+.checks input:checked+.bx svg{stroke-dashoffset:0}
+.checks label:has(input:checked){box-shadow:inset 0 0 0 1.8px var(--amber-d)}
+.checks label:has(input:focus-visible){outline:3px solid var(--amber-d);outline-offset:3px}
+.score{margin-top:20px;background:var(--navy);color:var(--ice);border-radius:24px;padding:26px 28px;min-height:150px}
+.score .n{font-family:var(--display);font-weight:800;font-size:44px;letter-spacing:-.04em;line-height:1}
+.score .n small{font-size:20px;font-weight:600;color:#9CA5D6;letter-spacing:0}
+.score p{margin-top:10px;color:#D4D9F2;font-size:16px}
+.score .btn{margin-top:16px;padding:13px 26px;font-size:15.5px}
+@media(max-width:860px){.test .wrap{grid-template-columns:1fr}}
+
+/* ---------- servicos ---------- */
+.svc{background:var(--navy);color:var(--ice);padding:clamp(70px,10vw,140px) 0}
+.svc .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,6vw,100px)}
+.svc h2{position:sticky;top:110px;align-self:start}
+.svc .intro{margin-top:22px;color:#BCC3EA;max-width:36ch}
+.rows{border-top:1.5px solid rgba(255,255,255,.35)}
+.row{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:24px;padding:30px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.row h3{color:var(--amber)}
+.row p{color:#C9CFEE;font-size:16.5px}
+@media(max-width:860px){.svc .wrap{grid-template-columns:1fr}.svc h2{position:static}}
+@media(max-width:560px){.row{grid-template-columns:1fr;gap:8px}}
+
+/* ---------- demos ---------- */
+.demo{padding:clamp(70px,10vw,140px) 0;overflow:hidden}
+.demo .head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:40px}
+.pills{display:flex;gap:10px;flex-wrap:wrap}
+.pill{font:inherit;font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:-.01em;padding:12px 22px;border-radius:999px;border:0;background:#fff;color:var(--navy);box-shadow:inset 0 0 0 1.8px var(--line);cursor:pointer;transition:all .2s}
+.pill:hover{box-shadow:inset 0 0 0 1.8px var(--navy)}
+.pill[aria-selected=true]{background:var(--navy);color:var(--ice);box-shadow:none}
+.stage{display:grid;grid-template-columns:1.3fr .7fr;gap:clamp(24px,4vw,60px);align-items:center}
+.frame{border-radius:22px;background:#fff;box-shadow:0 30px 80px rgba(18,26,69,.2),inset 0 0 0 1.8px var(--navy);overflow:hidden}
+.fbar{display:flex;align-items:center;gap:8px;padding:14px 18px;background:var(--ice-2);border-bottom:1.8px solid var(--navy)}
+.fbar i{width:10px;height:10px;border-radius:50%;background:var(--navy);opacity:.35}
+.fbar u{margin-left:10px;flex:1;background:#fff;border-radius:999px;font-size:13px;color:var(--mute);padding:5px 14px;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.site{background:var(--sbg);color:var(--sink);font-family:var(--sfont);padding:clamp(18px,3vw,36px);transition:background .5s,color .5s;min-height:430px;display:grid;align-content:start;gap:clamp(16px,2.4vw,28px)}
+.site .sn{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:clamp(14px,1.5vw,18px)}
+.site .sn span{display:flex;gap:16px;font-weight:500;font-size:clamp(11px,1.1vw,14px);opacity:.7}
+.site h4{font-size:clamp(24px,3.6vw,46px);line-height:1.04;letter-spacing:-.025em;max-width:16ch;font-weight:var(--sw,700)}
+.site p{font-size:clamp(12px,1.2vw,15px);opacity:.8;max-width:38ch}
+.site .sb{justify-self:start;background:var(--sac);color:var(--sact);font-weight:700;font-size:clamp(12px,1.2vw,15px);padding:11px 22px;border-radius:var(--srad,999px)}
+.site .sc{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.site .sc div{background:var(--scard);border-radius:calc(var(--srad,999px)/3);padding:14px 14px 16px;font-size:clamp(11px,1.15vw,14px);font-weight:600;min-height:62px}
+.site .sc div::before{content:"";display:block;width:22px;height:5px;border-radius:3px;background:var(--sac);margin-bottom:10px}
+.dside h3{font-size:clamp(26px,2.6vw,34px);margin-bottom:12px}
+.dside p{color:#2B3573;margin-bottom:18px}
+.dside ul{list-style:none;display:grid;gap:8px;margin-bottom:26px}
+.dside li{padding-left:24px;position:relative;font-size:16.5px;font-weight:500}
+.dside li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:10px;border-radius:50%;background:var(--amber)}
+@media(max-width:900px){.stage{grid-template-columns:1fr}}
+
+/* ---------- como funciona ---------- */
+.flow{background:var(--ice-2);padding:clamp(70px,10vw,130px) 0}
+.flow h2{max-width:15ch;margin-bottom:clamp(36px,5vw,64px)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.8px solid var(--navy)}
+.step{padding:28px clamp(14px,2vw,30px) 8px 0;border-right:1px solid var(--line);margin-right:clamp(14px,2vw,30px)}
+.step:last-child{border:0;margin-right:0}
+.step small{display:block;font-weight:700;font-size:14px;color:#8A5E00;margin-bottom:14px}
+.step h3{margin-bottom:10px;font-size:25px}
+.step p{font-size:16px;color:#2B3573}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr;row-gap:20px}.step:nth-child(2n){border-right:0;margin-right:0}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}.step{border-right:0;margin-right:0;border-bottom:1px solid var(--line);padding-bottom:24px}}
+
+/* ---------- precos ---------- */
+.price{padding:clamp(70px,10vw,140px) 0}
+.price h2{max-width:16ch;margin-bottom:clamp(30px,4vw,54px)}
+.plans{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+.plan{border-radius:30px;padding:clamp(26px,3.4vw,46px);display:grid;gap:18px;align-content:start}
+.plan.main{background:var(--navy);color:var(--ice)}
+.plan.sec{background:#fff;box-shadow:inset 0 0 0 1.8px var(--navy)}
+.plan h3{font-size:26px}
+.plan .v{font-family:var(--display);font-weight:800;font-size:clamp(46px,5.4vw,72px);letter-spacing:-.05em;line-height:1}
+.plan .v small{font-size:20px;font-weight:600;letter-spacing:0;opacity:.7}
+.plan.main .v{color:var(--amber)}
+.plan ul{list-style:none;display:grid;gap:10px}
+.plan li{padding-left:28px;position:relative;font-size:16.5px}
+.plan li::before{content:"";position:absolute;left:0;top:.35em;width:16px;height:16px;border-radius:50%;background:var(--amber)}
+.plan li::after{content:"";position:absolute;left:5px;top:.58em;width:4px;height:8px;border:solid var(--navy);border-width:0 2px 2px 0;transform:rotate(40deg)}
+.plan .note{font-size:14.5px;opacity:.75}
+.extra{margin-top:20px;padding:22px 28px;border-radius:22px;background:var(--ice-2);display:flex;flex-wrap:wrap;gap:8px 30px;align-items:center;font-size:16.5px}
+.extra b{font-family:var(--display)}
+@media(max-width:860px){.plans{grid-template-columns:1fr}}
+
+/* ---------- sobre ---------- */
+.about{background:var(--navy);color:var(--ice);padding:clamp(70px,10vw,130px) 0}
+.about .wrap{display:grid;grid-template-columns:.7fr 1.3fr;gap:clamp(30px,6vw,100px);align-items:center}
+.seal{aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 42%,var(--amber) 0 22%,#2B3573 22.5% 100%);max-width:380px;width:100%;justify-self:center;display:grid;place-items:center;position:relative}
+.seal b{position:absolute;bottom:14%;font-family:var(--display);font-size:clamp(22px,3vw,34px);letter-spacing:-.03em}
+.about h2{margin-bottom:22px}
+.about p{color:#C9CFEE;margin-bottom:16px}
+@media(max-width:860px){.about .wrap{grid-template-columns:1fr}.seal{max-width:240px}}
+
+/* ---------- faq ---------- */
+.faq{padding:clamp(70px,10vw,130px) 0}
+.faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,100px)}
+.faq h2{position:sticky;top:110px;align-self:start}
+details{border-bottom:1px solid var(--line)}
+.list{border-top:1.8px solid var(--navy)}
+summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;padding:24px 4px}
+summary::-webkit-details-marker{display:none}
+summary h3{font-size:19px;letter-spacing:-.015em;line-height:1.3;font-weight:600}
+summary:hover h3{color:#8A5E00}
+.pm{width:42px;height:42px;border-radius:50%;box-shadow:inset 0 0 0 1.8px var(--navy);position:relative;transition:all .3s}
+.pm::before,.pm::after{content:"";position:absolute;left:50%;top:50%;width:15px;height:2px;background:var(--navy);transform:translate(-50%,-50%);transition:all .3s}
+.pm::after{transform:translate(-50%,-50%) rotate(90deg)}
+details[open] .pm{background:var(--navy)}
+details[open] .pm::before,details[open] .pm::after{background:var(--amber)}
+details[open] .pm::after{transform:translate(-50%,-50%) rotate(0)}
+details p{padding:0 4px 24px;color:#2B3573}
+@media(max-width:860px){.faq .wrap{grid-template-columns:1fr}.faq h2{position:static}}
+
+/* ---------- contato ---------- */
+.contact{background:var(--night);color:var(--ice);padding:clamp(70px,10vw,130px) 0;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;left:-10%;top:-30%;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(255,194,51,.28),rgba(255,194,51,0) 65%);pointer-events:none}
+.contact .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,100px);align-items:start}
+.contact h2{margin-bottom:22px}
+.contact .info{margin-top:38px;display:grid;gap:18px;font-size:17px}
+.contact .info b{display:block;font-size:14px;color:#9CA5D6;font-weight:600}
+.form{background:var(--ice);color:var(--navy);border-radius:30px;padding:clamp(24px,3.4vw,44px);display:grid;gap:16px}
+.f{display:grid;gap:7px}
+.f label,.f .lb{font-size:14px;font-weight:700}
+.f input,.f select{font:inherit;font-size:17px;padding:15px 16px;border-radius:14px;border:1.8px solid var(--line);background:#fff;color:var(--navy);width:100%}
+.f input:focus,.f select:focus{outline:3px solid var(--amber-d);outline-offset:1px;border-color:var(--amber-d)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg label{position:relative}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:block;text-align:center;padding:13px 6px;border-radius:14px;border:1.8px solid var(--line);background:#fff;font-size:16px;font-weight:600;cursor:pointer;transition:all .2s}
+.seg input:checked+span{background:var(--navy);color:#fff;border-color:var(--navy)}
+.seg input:focus-visible+span{outline:3px solid var(--amber-d);outline-offset:2px}
+.form .btn{width:100%}
+.form .fine{font-size:13px;color:var(--mute);text-align:center;margin:0 auto}
+@media(max-width:860px){.contact .wrap{grid-template-columns:1fr}}
+
+footer{background:#070B22;color:#8F98C9;padding:40px 0 100px;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:var(--amber)}
+
+.wa{position:fixed;right:clamp(14px,2.4vw,28px);bottom:clamp(14px,2.4vw,28px);z-index:60;display:flex;align-items:center;gap:10px;background:#1F9D55;color:#fff;text-decoration:none;font-family:var(--display);font-weight:600;font-size:15.5px;padding:14px 22px 14px 16px;border-radius:999px;box-shadow:0 10px 30px rgba(10,15,46,.35);transition:transform .2s}
+.wa:hover{transform:translateY(-2px)}
+.wa svg{width:26px;height:26px}
+@media(max-width:560px){.wa span{display:none}.wa{padding:15px}}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#topo" aria-label="Lumisite, início">
+      <svg viewBox="0 0 64 64" fill="none" stroke="#F4F5FB" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="8" width="52" height="48" rx="7" stroke-width="3.4"/><path d="M6 20H58" stroke-width="3.4"/><circle cx="13" cy="14" r="1.9" fill="#F4F5FB" stroke="none"/><circle cx="19.500" cy="14" r="1.9" fill="#F4F5FB" stroke="none"/><circle cx="26" cy="14" r="1.9" fill="#F4F5FB" stroke="none"/><circle cx="32" cy="38" r="6.200" fill="#FFC233" stroke="none"/><path d="M32 26V28.500M32 47.500V50M20 38H22.500M41.500 38H44M23.500 29.500L25.200 31.200M38.800 44.800L40.500 46.500M40.500 29.500L38.800 31.200M25.200 44.800L23.500 46.500" stroke-width="3"/></svg>
+      <b>Lumi<span>site</span></b>
+    </a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#teste">Teste rápido</a></li>
+        <li><a href="#servicos">O que está incluso</a></li>
+        <li><a href="#demonstracoes">Demonstrações</a></li>
+        <li><a href="#como">Como funciona</a></li>
+        <li><a href="#precos">Preços</a></li>
+        <li><a href="#duvidas">Dúvidas</a></li>
+      </ul>
+    </nav>
+    <a class="btn" href="#contato">Quero meu site</a>
+  </div>
+</header>
+
+<main id="topo">
+
+<!-- HERO -->
+<section class="hero" id="hero" data-lit="1">
+  <script>
+    (function(){var h=document.getElementById('hero');
+      if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){h.setAttribute('data-lit','0');
+        setTimeout(function(){if(h.getAttribute('data-auto')!=='stop')h.setAttribute('data-lit','1')},1500)}})();
+  </script>
+  <div class="wrap">
+    <div>
+      <h1 aria-label="Seu negócio com a luz acesa na internet.">
+        <span class="off" aria-hidden="true">Seu negócio no escuro.</span>
+        <span class="on">Seu negócio com a <b>luz acesa</b> na internet.</span>
+      </h1>
+      <p class="sub">Criamos sites para clínicas, consultórios e negócios locais, de qualquer cidade do Brasil. Rápidos no celular, com botão de WhatsApp e prontos para serem encontrados no Google.</p>
+      <div class="cta">
+        <a class="btn" href="#contato">Quero meu site</a>
+        <a class="btn line" href="#demonstracoes">Ver demonstrações</a>
+      </div>
+      <button class="sw" id="sw" type="button" aria-pressed="true"><i aria-hidden="true"></i><span id="swl">Apagar a luz</span></button>
+    </div>
+    <div class="win" aria-hidden="true">
+      <div class="bar"><i></i><i></i><i></i><u>seunegocio.com.br</u></div>
+      <div class="sunbox">
+        <svg viewBox="0 0 200 200">
+          <g class="rays" stroke="#C98500" stroke-width="8" stroke-linecap="round"><path d="M100 8V32M100 168V192M8 100H32M168 100H192M35 35L52 52M148 148L165 165M165 35L148 52M52 148L35 165"/></g>
+          <circle class="disc" cx="100" cy="100" r="46"/>
+        </svg>
+      </div>
+      <div class="lines"><b></b><b></b><b></b><em></em></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTE -->
+<section class="test" id="teste">
+  <div class="wrap">
+    <div>
+      <h2>O site do seu negócio passa neste teste?</h2>
+      <p class="lead">Marque o que o seu site (ou perfil) já tem hoje. Leva dez segundos e mostra o que falta para o cliente escolher você.</p>
+    </div>
+    <div>
+      <div class="checks" id="checks">
+        <label><input type="checkbox"><span class="bx"><svg viewBox="0 0 40 40"><path pathLength="1" d="M8 21L17 30L33 11"/></svg></span>Abre rápido no celular</label>
+        <label><input type="checkbox"><span class="bx"><svg viewBox="0 0 40 40"><path pathLength="1" d="M8 21L17 30L33 11"/></svg></span>Tem botão de WhatsApp à vista</label>
+        <label><input type="checkbox"><span class="bx"><svg viewBox="0 0 40 40"><path pathLength="1" d="M8 21L17 30L33 11"/></svg></span>Mostra endereço e horário com clareza</label>
+        <label><input type="checkbox"><span class="bx"><svg viewBox="0 0 40 40"><path pathLength="1" d="M8 21L17 30L33 11"/></svg></span>Explica os serviços de forma simples</label>
+        <label><input type="checkbox"><span class="bx"><svg viewBox="0 0 40 40"><path pathLength="1" d="M8 21L17 30L33 11"/></svg></span>Aparece quando pesquisam seu nome no Google</label>
+      </div>
+      <div class="score" id="score" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICOS -->
+<section class="svc" id="servicos">
+  <div class="wrap">
+    <div>
+      <h2>Tudo o que um site profissional precisa, já incluso</h2>
+      <p class="intro">Você não precisa entender de tecnologia. Cuidamos do site do começo ao fim.</p>
+    </div>
+    <div class="rows">
+      <div class="row"><h3>Design feito para o seu negócio</h3><p>Cores, textos e fotos pensados para o seu público. Cada site é montado do zero, e não adaptado de um modelo igual ao do vizinho.</p></div>
+      <div class="row"><h3>Perfeito no celular</h3><p>A maior parte dos clientes chega pelo celular. O site abre rápido e é fácil de ler e de tocar em qualquer tela.</p></div>
+      <div class="row"><h3>WhatsApp e agendamento</h3><p>Botão de WhatsApp em todas as páginas e formulário que já abre a conversa com a mensagem pronta.</p></div>
+      <div class="row"><h3>Pronto para o Google</h3><p>Título, descrição, mapa e dados do negócio configurados para facilitar que as pessoas da sua cidade encontrem você.</p></div>
+      <div class="row"><h3>Hospedagem e segurança</h3><p>O site fica no ar com HTTPS (o cadeado no navegador) e com cópias de segurança. Você não precisa contratar nada à parte.</p></div>
+      <div class="row"><h3>Domínio no seu nome</h3><p>O endereço do site é registrado em seu nome. Ele é seu, e você pode levar para onde quiser.</p></div>
+      <div class="row"><h3>Respeito às regras da sua área</h3><p>Em saúde, seguimos as regras de publicidade dos conselhos (CFM e CFO): sem promessa de resultado, sem depoimentos e sem antes e depois.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMOS -->
+<section class="demo" id="demonstracoes">
+  <div class="wrap">
+    <div class="head">
+      <h2>Veja como fica no seu nicho</h2>
+      <div class="pills" role="tablist" aria-label="Nichos" id="pills"></div>
+    </div>
+    <div class="stage">
+      <div class="frame">
+        <div class="fbar"><i></i><i></i><i></i><u id="url"></u></div>
+        <div class="site" id="site"></div>
+      </div>
+      <div class="dside" id="dside"></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="flow" id="como">
+  <div class="wrap">
+    <h2>Do primeiro papo ao site no ar</h2>
+    <div class="steps">
+      <div class="step"><small>Dia 1</small><h3>Conversa</h3><p>Você conta sobre o seu negócio, o público e o que quer que o site faça. Combinamos o escopo e o valor.</p></div>
+      <div class="step"><small>Dias 2 e 3</small><h3>Material</h3><p>Você envia logo, fotos, serviços, horários e redes sociais. Se faltar algo, ajudamos a decidir o texto.</p></div>
+      <div class="step"><small>Até 10 dias úteis</small><h3>Criação e ajustes</h3><p>Você recebe o site para ver e pedir alterações. Estão incluídas 2 rodadas de ajustes.</p></div>
+      <div class="step"><small>Entrega</small><h3>Site no ar</h3><p>Publicamos o site, configuramos o domínio e deixamos tudo funcionando. Depois, você escolhe se quer a manutenção mensal.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECOS -->
+<section class="price" id="precos">
+  <div class="wrap">
+    <h2>Preço claro, sem surpresa</h2>
+    <div class="plans">
+      <div class="plan main">
+        <h3>Criação do site</h3>
+        <div class="v">R$ 1.000</div>
+        <ul>
+          <li>Site profissional completo e responsivo</li>
+          <li>Botão de WhatsApp e formulário de contato</li>
+          <li>Configuração para o Google</li>
+          <li>Entrega em até 10 dias úteis</li>
+          <li>2 rodadas de ajustes incluídas</li>
+          <li>30 dias de garantia para erros nossos</li>
+        </ul>
+        <p class="note">Pagamento por Pix: R$ 500 na entrada e R$ 500 na entrega.</p>
+        <a class="btn" href="#contato" style="justify-self:start">Pedir orçamento</a>
+      </div>
+      <div class="plan sec">
+        <h3>Manutenção mensal</h3>
+        <div class="v">R$ 150<small> /mês</small></div>
+        <ul>
+          <li>Hospedagem com HTTPS</li>
+          <li>Cópias de segurança</li>
+          <li>Até 3 pequenas alterações por mês</li>
+          <li>Atendimento em até 3 dias úteis</li>
+        </ul>
+        <p class="note">Opcional. Você pode contratar só a criação e cuidar do site por conta própria.</p>
+      </div>
+    </div>
+    <div class="extra"><b>Sem plano mensal?</b><span>Alteração pequena avulsa: R$ 50, paga por Pix antes do serviço.</span></div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="about">
+  <div class="wrap">
+    <div class="seal" aria-hidden="true"><b>Lumisite</b></div>
+    <div>
+      <h2>Quem está por trás da Lumisite</h2>
+      <p>Meu nome é Eduardo, tenho 19 anos, moro em São Paulo e trabalho com tecnologia. Criei a Lumisite porque vejo bons profissionais e negócios locais que ainda dependem só do Instagram ou do boca a boca.</p>
+      <p>Você fala direto comigo, do primeiro contato até a entrega. Combinamos tudo por escrito, em contrato, e o domínio e o site ficam no seu nome.</p>
+      <p>Atendo clínicas, consultórios, barbearias e outros negócios locais, em qualquer cidade do Brasil, de forma 100% online.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="duvidas">
+  <div class="wrap">
+    <h2>Dúvidas frequentes</h2>
+    <div class="list">
+      <details name="f" open><summary><h3>Vocês atendem fora de São Paulo?</h3><span class="pm" aria-hidden="true"></span></summary><p>Sim. Todo o trabalho é feito online, por WhatsApp e chamada de vídeo, e atendemos negócios de qualquer cidade do Brasil.</p></details>
+      <details name="f"><summary><h3>Preciso ter os textos e as fotos prontos?</h3><span class="pm" aria-hidden="true"></span></summary><p>Não. Você envia as informações do negócio, e nós ajudamos a organizar os textos. As fotos podem ser as que você já tem, e orientamos o que vale a pena fazer depois.</p></details>
+      <details name="f"><summary><h3>O domínio e o site são meus?</h3><span class="pm" aria-hidden="true"></span></summary><p>Sim. O domínio é registrado em seu nome. A taxa anual do registro é paga por você diretamente ao registrador, e o contrato deixa isso claro.</p></details>
+      <details name="f"><summary><h3>E se eu quiser mudar algo depois?</h3><span class="pm" aria-hidden="true"></span></summary><p>Com a manutenção mensal, você tem até 3 pequenas alterações por mês. Sem ela, cada alteração pequena custa R$ 50.</p></details>
+      <details name="f"><summary><h3>Como funciona o pagamento?</h3><span class="pm" aria-hidden="true"></span></summary><p>Por Pix, em duas partes: metade na entrada e metade na entrega. A mensalidade, se você contratar, vence todo dia 10.</p></details>
+      <details name="f"><summary><h3>Posso cancelar a manutenção?</h3><span class="pm" aria-hidden="true"></span></summary><p>Sim, quando quiser, conforme o contrato. O site continua sendo seu, e entregamos o necessário para você levá-lo para outro lugar.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contact" id="contato">
+  <div class="wrap">
+    <div>
+      <h2>Vamos acender a luz do seu negócio?</h2>
+      <p style="color:#C9CFEE">Preencha ao lado e o WhatsApp abre com a mensagem pronta. A conversa inicial é sem compromisso.</p>
+      <div class="info">
+        <div><b>WhatsApp</b>Atendimento de segunda a sábado</div>
+        <div><b>Instagram</b><a href="https://www.instagram.com/lumisite.sp/" target="_blank" rel="noopener" style="color:var(--amber)">@lumisite.sp</a></div>
+        <div><b>Atendimento</b>Online, em todo o Brasil</div>
+      </div>
+    </div>
+    <form class="form" id="form" novalidate>
+      <div class="f"><label for="nome">Seu nome</label><input id="nome" autocomplete="name" placeholder="Como devo chamar você?"></div>
+      <div class="f"><label for="neg">Tipo de negócio</label>
+        <select id="neg"><option>Clínica odontológica</option><option>Dermatologia</option><option>Psiquiatria ou psicologia</option><option>Outra clínica ou consultório</option><option>Barbearia ou salão</option><option>Loja</option><option>Outro negócio</option></select></div>
+      <div class="f"><label for="cid">Cidade e estado</label><input id="cid" placeholder="Ex.: Curitiba, PR"></div>
+      <div class="f"><span class="lb" id="lt">Você já tem site?</span>
+        <div class="seg" role="radiogroup" aria-labelledby="lt">
+          <label><input type="radio" name="tem" value="ainda não tenho site" checked><span>Ainda não</span></label>
+          <label><input type="radio" name="tem" value="já tenho site, mas quero renovar"><span>Quero renovar</span></label>
+        </div></div>
+      <button class="btn" type="submit">Abrir WhatsApp com a mensagem</button>
+      <p class="fine">Usamos seus dados só para responder ao seu contato.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b style="color:var(--ice)">Lumisite</b> · Sites para clínicas e negócios locais · Todo o Brasil</div>
+    <div><a href="https://www.instagram.com/lumisite.sp/" target="_blank" rel="noopener">@lumisite.sp</a></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5511900000000?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20um%20site%20para%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.500a8.500 8.500 0 0 1-12.600 7.400L3 20.500l1.700-5.200A8.500 8.500 0 1 1 21 11.500z"/><path d="M9 8.800c.3 3.400 3 6 6.400 6.300"/></svg>
+  <span>Falar pelo WhatsApp</span>
+</a>
+
+<script>
+/* >>> TROQUE AQUI: seu número de WhatsApp (55 + DDD + número) e os links das demonstrações <<< */
+const PHONE='5511900000000';
+const DEMOS={
+  odonto:'https://eduardomosanevesdutra.github.io/Clinica-lumine/',
+  dermato:'',
+  barbearia:'',
+  psiquiatria:''
+};
+const $=s=>document.querySelector(s);
+const wa=t=>`https://wa.me/${PHONE}?text=${encodeURIComponent(t)}`;
+document.querySelector('.wa').href=wa('Olá! Quero saber mais sobre um site para o meu negócio.');
+
+/* --- luz do hero --- */
+const hero=$('#hero'),sw=$('#sw');
+function setLit(v){if(hero.getAttribute('data-lit')!==(v?'1':'0'))hero.setAttribute('data-lit',v?'1':'0');sw.setAttribute('aria-pressed',v);$('#swl').textContent=v?'Apagar a luz':'Acender a luz'}
+sw.addEventListener('click',()=>{hero.setAttribute('data-auto','stop');setLit(hero.getAttribute('data-lit')!=='1')});
+new MutationObserver(()=>setLit(hero.getAttribute('data-lit')==='1')).observe(hero,{attributes:true,attributeFilter:['data-lit']});
+setLit(hero.getAttribute('data-lit')==='1');
+
+/* --- teste --- */
+const cks=[...document.querySelectorAll('#checks input')],sc=$('#score');
+function score(){const n=cks.filter(c=>c.checked).length;let t,p,b='';
+  if(n===5){t='Seu site está em dia.';p='Parabéns. Se quiser, posso olhar o que dá para evoluir, como design, velocidade e textos.';}
+  else if(n===0){t='Vamos começar do zero.';p='Seu negócio ainda não tem o básico para ser escolhido na internet. Isso se resolve em até 10 dias úteis.';}
+  else{t=`Faltam ${5-n} itens.`;p='São exatamente os pontos em que um site bem feito ajuda o cliente a escolher você.';}
+  if(n<5)b=`<a class="btn" href="${wa('Olá! Fiz o teste no site da Lumisite e marquei '+n+' de 5 itens. Quero conversar sobre um site.')}" target="_blank" rel="noopener">Quero resolver isso</a>`;
+  sc.innerHTML=`<div class="n">${n}<small> de 5 itens</small></div><p><b>${t}</b> ${p}</p>${b}`}
+cks.forEach(c=>c.addEventListener('change',score));score();
+
+/* --- demos por nicho --- */
+const N=[
+ {id:'odonto',name:'Odontologia',url:'suaclinica.com.br',font:'"Manrope",sans-serif',bg:'#F2F8FB',ink:'#0F2A3D',ac:'#1FA3B8',act:'#fff',card:'#fff',rad:'999px',sw:700,
+  h:'Seu sorriso em boas mãos.',sub:'Consultas com hora marcada, avaliação completa e atendimento sem pressa.',btn:'Agendar avaliação',cards:['Limpeza','Clareamento','Ortodontia'],
+  title:'Clínica odontológica',txt:'Para o paciente que pesquisa "dentista perto de mim" e escolhe quem mostra serviços e horário com clareza.',pts:['Agendamento pelo WhatsApp','Serviços e equipe','Mapa e como chegar']},
+ {id:'dermato',name:'Dermatologia',url:'draclara.com.br',font:'"Georgia",serif',bg:'#F6F1F4',ink:'#24102A',ac:'#B8435F',act:'#fff',card:'#fff',rad:'999px',sw:400,
+  h:'Sua pele, avaliada com método.',sub:'Check-up de pintas, acne, manchas e cuidados com calma e clareza.',btn:'Agendar consulta',cards:['Acne','Pintas','Cabelos'],
+  title:'Dermatologia',txt:'Site com conteúdo educativo, ferramenta das pintas e regras de publicidade médica respeitadas.',pts:['Regra do ABCDE interativa','Camadas da pele ilustradas','Formulário para WhatsApp']},
+ {id:'barbearia',name:'Barbearia',url:'ferroefio.com.br',font:'"DejaVu Sans Condensed","Oswald",sans-serif',bg:'#16130F',ink:'#F1E9DA',ac:'#C9973F',act:'#16130F',card:'#241F18',rad:'8px',sw:700,
+  h:'CORTE E BARBA FEITOS COM CALMA.',sub:'Horário marcado, ambiente tranquilo e barbeiros que ouvem você.',btn:'Reservar horário',cards:['Corte','Barba','Combo'],
+  title:'Barbearia',txt:'Visual forte, preços à vista e reserva de horário em um toque, do jeito que o cliente da barbearia espera.',pts:['Serviços com preços','Equipe de barbeiros','Reserva pelo WhatsApp']},
+ {id:'psiquiatria',name:'Psiquiatria',url:'draprado.com.br',font:'"Georgia",serif',bg:'#EFF4F0',ink:'#1E2D26',ac:'#4F7A68',act:'#fff',card:'#fff',rad:'999px',sw:500,
+  h:'Cuidar da mente começa com uma conversa.',sub:'Primeira consulta explicada passo a passo, com sigilo e acolhimento.',btn:'Marcar consulta',cards:['Ansiedade','Humor','Sono'],
+  title:'Psiquiatria',txt:'Tom acolhedor, passo a passo da primeira consulta e orientação de urgência, sem depoimentos.',pts:['Primeira consulta explicada','Dúvidas frequentes','Aviso de urgência (192/188)']}
+];
+const pills=$('#pills');let cur='odonto';
+pills.innerHTML=N.map(n=>`<button class="pill" role="tab" data-id="${n.id}" aria-selected="${n.id===cur}">${n.name}</button>`).join('');
+function show(id){cur=id;const n=N.find(x=>x.id===id);
+  pills.querySelectorAll('.pill').forEach(b=>b.setAttribute('aria-selected',b.dataset.id===id));
+  const s=$('#site');s.style.cssText=`--sbg:${n.bg};--sink:${n.ink};--sac:${n.ac};--sact:${n.act};--scard:${n.card};--srad:${n.rad};--sfont:${n.font};--sw:${n.sw}`;
+  s.innerHTML=`<div class="sn"><b>${n.title}</b><span><i>Serviços</i><i>Equipe</i><i>Contato</i></span></div><h4>${n.h}</h4><p>${n.sub}</p><div class="sb">${n.btn}</div><div class="sc">${n.cards.map(c=>`<div>${c}</div>`).join('')}</div>`;
+  $('#url').textContent=n.url;
+  const link=DEMOS[id]?`<a class="btn dark" href="${DEMOS[id]}" target="_blank" rel="noopener">Abrir o site de demonstração</a>`:'';
+  $('#dside').innerHTML=`<h3>${n.title}</h3><p>${n.txt}</p><ul>${n.pts.map(p=>`<li>${p}</li>`).join('')}</ul>${link}`}
+pills.addEventListener('click',e=>{const b=e.target.closest('.pill');if(b)show(b.dataset.id)});
+show(cur);
+
+/* --- formulario --- */
+$('#form').addEventListener('submit',e=>{e.preventDefault();
+  const nome=$('#nome').value.trim();
+  if(!nome){$('#nome').focus();$('#nome').setAttribute('placeholder','Digite seu nome para continuar');return}
+  const cid=$('#cid').value.trim(),tem=document.querySelector('input[name=tem]:checked').value;
+  const t=`Olá! Meu nome é ${nome}. Tenho um negócio na área de: ${$('#neg').value}${cid?`, em ${cid}`:''}. Sobre o site: ${tem}. Quero conversar sobre um site para o meu negócio.`;
+  window.open(wa(t),'_blank','noopener');
+});
+</script>
+</body>
+</html>
